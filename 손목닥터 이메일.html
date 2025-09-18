@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[손목닥터9988] 금연클리닉 참여 신청자 정보 전달 (내소 안내 필요)</title>
+    <!-- SheetJS 라이브러리 추가 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body style="margin: 0; padding: 0; background-color: #F7F7F7; font-family: 'Pretendard', 'Malgun Gothic', '맑은 고딕', sans-serif;">
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 700px; margin: 30px auto; background-color: #ffffff; border: 1px solid #EAEAEA; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+        <!-- Header with Logo Style -->
+        <tr>
+            <td align="center" style="padding: 25px 0; background-color: #E0F7FA; border-top-left-radius: 12px; border-top-right-radius: 12px;">
+                <h1 style="margin: 0; font-size: 32px; font-weight: 900; color: #111; letter-spacing: -1px;">
+                    손목닥터<span style="color: #EC407A;">99</span><span style="color: #00ACC1;">88</span>
+                </h1>
+                <p style="margin: 8px 0 0 0; font-size: 20px; color: #333333; font-weight: bold;">
+                    금연클리닉 참여 신청자 정보 전달
+                </p>
+            </td>
+        </tr>
+        <!-- Body -->
+        <tr>
+            <td style="padding: 35px 30px;">
+                <p style="font-size: 16px; line-height: 1.7; color: #333333;">
+                    <strong>OO보건소 금연클리닉 담당 주무관님께,</strong>
+                </p>
+                <p style="font-size: 16px; line-height: 1.7; color: #333333;">
+                    손목닥터9988을 통해 금연클리닉 참여를 희망하는 신규 신청자가 접수되었습니다.<br>
+                    아래 대상자는 금연클리닉 <strong>정식 등록을 위해 보건소 내소 안내 및 방문 예약이 필요</strong>하오니, <br>관련 업무에 참고하여 주시기 바랍니다.
+                </p>
+
+                <!-- Integrated Call to Action Box -->
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 25px;">
+                    <tr>
+                        <td width="20" style="font-size: 0; line-height: 0;">&nbsp;</td>
+                        <td align="center" width="80" style="background-color: #00ACC1; border: 1px solid #00ACC1; border-bottom: none; border-radius: 8px 8px 0 0; padding: 8px 16px;">
+                            <h3 style="margin: 0; font-size: 18px; color: #ffffff; font-weight: bold; line-height: 0.8;">확인사항</h3>
+                        </td>
+                        <td style="border-bottom: 1px solid #EAEAEA;">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="background-color: #F8F9FA; border: 1px solid #EAEAEA; border-top: none; border-radius: 0 8px 8px 8px; padding: 20px;">
+                            <ul style="margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.8; color: #555;">
+                                <li>아래 정보를 바탕으로 신청자에게 연락하시어, <strong>첫 방문 일정을 조율</strong>해 주시기 바랍니다.</li>
+                                <li>첫 방문 시, 금연클리닉 <strong>정식 등록 절차를 진행</strong>해 주시기 바랍니다.<br><span style="font-size: 14px; color: #777;">(담배제품 사용여부 측정, 니코틴 의존도 재평가, 니코틴보조제 안내 등)</span></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+
+                <hr style="border: 0; border-top: 1px solid #eeeeee; margin: 30px 0;">
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <h2 style="font-size: 22px; color: #333333; border-left: 5px solid #00ACC1; padding-left: 12px; font-weight: bold; margin-top: 0; margin-bottom: 0;">금연클리닉 신청자 정보</h2>
+                    <button onclick="downloadExcel()" style="background-color: #00ACC1; color: white; padding: 10px 15px; border: none; border-radius: 5px; font-size: 14px; cursor: pointer; font-weight: bold;">
+                        엑셀로 다운로드
+                    </button>
+                </div>
+
+                <!-- 1. 기본 정보 -->
+                <h3 style="font-size: 18px; color: #555555; margin-top: 30px; margin-bottom: 15px;">1. 기본 정보</h3>
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border: 1px solid #EAEAEA; border-radius: 8px; font-size: 16px; color: #555; overflow: hidden;">
+                    <!-- 성명 -->
+                    <tr style="background-color: #FFFFFF;">
+                        <td style="padding: 15px 20px; width: 120px; font-weight: bold; color: #666;">성명</td>
+                        <td id="info-name" style="padding: 15px 20px; color: #333;">OOO</td>
+                    </tr>
+                    <!-- 생년월일 -->
+                    <tr style="background-color: #F8F9FA;">
+                        <td style="padding: 15px 20px; font-weight: bold; color: #666;">생년월일</td>
+                        <td id="info-birth" style="padding: 15px 20px; color: #333;">2000-01-01</td>
+                    </tr>
+                    <!-- 연락처 -->
+                    <tr style="background-color: #FFFFFF;">
+                        <td style="padding: 15px 20px; font-weight: bold; color: #666;">연락처</td>
+                        <td id="info-contact" style="padding: 15px 20px; color: #333;">010-1234-5678</td>
+                    </tr>
+                    <!-- 이메일 -->
+                    <tr style="background-color: #F8F9FA;">
+                        <td style="padding: 15px 20px; font-weight: bold; color: #666;">이메일</td>
+                        <td id="info-email" style="padding: 15px 20px; color: #333;">example@email.com</td>
+                    </tr>
+                    <!-- 주소 -->
+                     <tr style="background-color: #FFFFFF;">
+                        <td style="padding: 15px 20px; font-weight: bold; color: #666;">주소</td>
+                        <td id="info-address" style="padding: 15px 20px; color: #333;">서울특별시 OO구 OO동</td>
+                    </tr>
+                     <!-- 접수일 -->
+                    <tr style="background-color: #F8F9FA;">
+                        <td style="padding: 15px 20px; font-weight: bold; color: #666;">접수일</td>
+                        <td id="info-reg-date" style="padding: 15px 20px; color: #333;">2025-09-18</td>
+                    </tr>
+                </table>
+
+                <!-- 2. 니코틴 의존도 테스트 결과 -->
+                <h3 style="font-size: 18px; color: #555555; margin-top: 30px; margin-bottom: 15px;">2. 니코틴 의존도 테스트 결과 (자가진단)</h3>
+                <table border="1" cellpadding="10" cellspacing="0" width="100%" style="font-size: 16px; border-collapse: collapse; border-color: #dddddd;">
+                    <thead style="background-color: #F8F9FA;">
+                        <tr>
+                            <th align="left" style="text-align: left; padding: 12px; border: 1px solid #dddddd; color: #333;">문항</th>
+                            <th align="left" style="text-align: left; padding: 12px; border: 1px solid #dddddd; color: #333;">답변</th>
+                            <th align="center" style="text-align: center; padding: 12px; border: 1px solid #dddddd; width: 60px; color: #333;">점수</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #dddddd;">1. 아침에 일어나서 얼마 만에 첫 담배를 피우십니까?</td>
+                            <td id="q1-answer" style="padding: 12px; border: 1px solid #dddddd;">5분 이내</td>
+                            <td id="q1-score" align="center" style="padding: 12px; text-align: center; border: 1px solid #dddddd;">3점</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #dddddd;">2. 하루에 보통 몇 개비나 피우십니까?</td>
+                            <td id="q2-answer" style="padding: 12px; border: 1px solid #dddddd;">21~30개비</td>
+                            <td id="q2-score" align="center" style="padding: 12px; text-align: center; border: 1px solid #dddddd;">2점</td>
+                        </tr>
+                        <tr style="background-color: #F8F9FA;">
+                            <td colspan="2" align="center" style="padding: 12px; text-align: center; font-weight: bold; border: 1px solid #dddddd;">총점</td>
+                            <td id="total-score" align="center" style="padding: 12px; text-align: center; font-weight: bold; border: 1px solid #dddddd;">5점</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <!-- 평가 결과 -->
+                <table align="center" border="0" cellpadding="0" cellspacing="0" width="40%" style="margin-top: 15px; border: 1px solid #DDDDDD; border-radius: 8px; overflow: hidden;">
+                    <!-- Title Header -->
+                    <tr>
+                        <td align="center" style="background-color: #00ACC1; padding: 10px 15px;">
+                            <strong style="color: #ffffff; font-size: 16px;">니코틴 의존도 평가 (자가진단)</strong>
+                        </td>
+                    </tr>
+                    <!-- Result Body -->
+                     <tr>
+			<br>
+                        <td align="center" style="background-color: #FFFFFF; padding: 25px 15px;">
+                            <span id="info-eval" style="font-size: 20px; font-weight: bold; color: #EC407A;">
+                                중간 수준 의존
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <!-- Footer -->
+        <tr>
+            <td align="center" style="padding: 25px 30px; background-color: #F7F7F7; border-bottom-left-radius: 12px; border-bottom-right-radius: 12px; text-align: center;">
+                <p style="margin: 0; font-size: 20px; color: #333333; font-weight: 900;">
+                    손목닥터<span style="color: #EC407A;">99</span><span style="color: #00ACC1;">88</span>
+                </p>
+            </td>
+        </tr>
+    </table>
+    
+    <script>
+        function parseNumericValue(text) {
+            if (!text) return '';
+            const match = text.match(/[\d,]+/);
+            return match ? match[0].replace(/,/g, '') : '';
+        }
+
+        function downloadExcel() {
+            const applicantData = {
+                name: document.getElementById('info-name').innerText,
+                birthdate: document.getElementById('info-birth').innerText,
+                contact: document.getElementById('info-contact').innerText,
+                email: document.getElementById('info-email').innerText,
+                address: document.getElementById('info-address').innerText,
+                registration_date: document.getElementById('info-reg-date').innerText,
+                q1_answer: document.getElementById('q1-answer').innerText,
+                q1_score: parseNumericValue(document.getElementById('q1-score').innerText),
+                q2_answer: document.getElementById('q2-answer').innerText,
+                q2_score: parseNumericValue(document.getElementById('q2-score').innerText),
+                total_score: parseNumericValue(document.getElementById('total-score').innerText),
+                nicotine_dependency_level: document.getElementById('info-eval').innerText
+            };
+            
+            const ws = XLSX.utils.json_to_sheet([applicantData]);
+
+            const newHeaders = [
+                "성명", "생년월일", "연락처", "이메일", "주소", "접수일",
+                "문항1 답변", "문항1 점수", "문항2 답변", "문항2 점수", "총점", "니코틴 의존도(자가진단)"
+            ];
+            XLSX.utils.sheet_add_aoa(ws, [newHeaders], { origin: "A1" });
+
+            const colWidths = newHeaders.map(header => ({ wch: Math.max(header.length, 18) }));
+            ws['!cols'] = colWidths;
+
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "신청자_데이터");
+
+            const applicantName = document.getElementById('info-name').innerText || '신청자';
+            XLSX.writeFile(wb, `[데이터]_${applicantName}_금연클리닉_신청정보.xlsx`);
+        }
+    </script>
+</body>
+</html>
